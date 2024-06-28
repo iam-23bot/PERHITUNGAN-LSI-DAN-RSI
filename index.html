@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LSI & RSI Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>LSI & RSI Calculator</h1>
+        <form id="calculator-form">
+            <label for="ph">pH:</label>
+            <input type="number" id="ph" step="0.01" required>
+            
+            <label for="temperature">Temperature (°C):</label>
+            <input type="number" id="temperature" step="0.1" required>
+            
+            <label for="tds">Total Dissolved Solids (ppm):</label>
+            <input type="number" id="tds" required>
+            
+            <label for="calcium">Calcium Hardness (ppm as CaCO3):</label>
+            <input type="number" id="calcium" required>
+            
+            <label for="alkalinity">Total Alkalinity (ppm as CaCO3):</label>
+            <input type="number" id="alkalinity" required>
+            
+            <button type="button" onclick="calculateIndices()">Calculate</button>
+        </form>
+        <div id="results">
+            <h2>Results</h2>
+            <p id="lsi-result"></p>
+            <p id="rsi-result"></p>
+            <p id="prediction-result"></p>
+        </div>
+        <div id="linkedin">
+            <p>LinkedIn: Muhammad Alfi Syahri</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
