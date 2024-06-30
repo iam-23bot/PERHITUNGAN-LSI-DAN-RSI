@@ -6,16 +6,23 @@ function calculateIndices() {
     const calcium = parseInt(document.getElementById('calcium').value);
     const alkalinity = parseInt(document.getElementById('alkalinity').value);
 
-    // Calculate LSI
-    const tFactor = (Math.log10(temperature) - 1) / 10;
-    const tdsFactor = Math.log10(tds) / 10;
-    const calciumFactor = Math.log10(calcium) - 0.4;
-    const alkalinityFactor = Math.log10(alkalinity);
+   // Constants
+const A = Math.log10(tds) - 1;
+const B = -13.12 * Math.log10(temperature + 273) + 34.55;
+const C = Math.log10(calcium) - 0.4;
+const D = Math.log10(alkalinity);
 
-    const lsi = pH + tFactor + tdsFactor + calciumFactor + alkalinityFactor - 12.1;
+// Calculate pH_sat
+const pH_sat = (9.3 + A + B) - (C + D);
 
-    // Calculate RSI
-    const rsi = 2 * (12.1 - lsi);
+// Calculate LSI
+const lsi = pH - pH_sat;
+
+// Calculate RSI
+const rsi = 2 * pH_sat - pH;
+
+console.log('LSI:', lsi);
+console.log('RSI:', rsi);
 
     // Display results
     document.getElementById('lsi-result').innerText = `LSI: ${lsi.toFixed(2)}`;
