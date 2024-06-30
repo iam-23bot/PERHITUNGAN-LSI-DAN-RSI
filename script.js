@@ -28,15 +28,33 @@ console.log('RSI:', rsi);
     document.getElementById('lsi-result').innerText = `LSI: ${lsi.toFixed(2)}`;
     document.getElementById('rsi-result').innerText = `RSI: ${rsi.toFixed(2)}`;
 
-    // Predict scaling or corrosion potential
-    let prediction;
-    if (lsi > 0) {
-        prediction = 'Water is scale-forming (potential scaling).';
-    } else if (lsi < 0) {
-        prediction = 'Water is corrosive (potential corrosion).';
+   function predictWaterTendency(lsi, rsi) {
+    let lsiPrediction;
+    if (lsi <= -2) {
+        lsiPrediction = 'Serious Corrosion';
+    } else if (lsi <= -0.5) {
+        lsiPrediction = 'Slightly corrosive and non-scaling';
+    } else if (lsi === 0) {
+        lsiPrediction = 'Balanced, but potential for pitting corrosion';
+    } else if (lsi <= 0.5) {
+        lsiPrediction = 'Slightly corrosive and scaling';
+    } else if (lsi >= 2) {
+        lsiPrediction = 'Scaling and generally non-corrosive';
     } else {
-        prediction = 'Water is balanced (neither scaling nor corrosive).';
+        lsiPrediction = 'No specific tendency';
     }
 
-    document.getElementById('prediction-result').innerText = prediction;
+    let rsiPrediction;
+    if (rsi < 6) {
+        rsiPrediction = 'Scale-forming';
+    } else if (rsi >= 6 && rsi <= 7) {
+        rsiPrediction = 'Neutral';
+    } else if (rsi > 7) {
+        rsiPrediction = 'Corrosive';
+    } else {
+        rsiPrediction = 'No specific tendency';
+    }
+
+    document.getElementById('lsi-prediction-result').innerText = `LSI Prediction: ${lsiPrediction}`;
+    document.getElementById('rsi-prediction-result').innerText = `RSI Prediction: ${rsiPrediction}`;
 }
