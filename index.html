@@ -3,38 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LSI & RSI Calculator</title>
+    <title>LSI dan RSI Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>LSI & RSI Calculator</h1>
-        <form id="calculator-form">
+        <h1>LSI dan RSI Calculator</h1>
+        <form id="calculator-form" onsubmit="calculateIndices(); return false;">
             <label for="ph">pH:</label>
-            <input type="number" id="ph" step="0.01" required>
-            
-            <label for="temperature">Temperature (°C):</label>
-            <input type="number" id="temperature" step="0.1" required>
-            
-            <label for="tds">Total Dissolved Solids (ppm):</label>
-            <input type="number" id="tds" required>
-            
-            <label for="calcium">Calcium Hardness (ppm as CaCO3):</label>
-            <input type="number" id="calcium" required>
-            
-            <label for="alkalinity">Total Alkalinity (ppm as CaCO3):</label>
-            <input type="number" id="alkalinity" required>
-            
-            <button type="button" onclick="calculateIndices()">Calculate</button>
+            <input type="number" id="ph" name="ph" step="0.01" required>
+
+            <label for="temperature">Temperature (°F):</label>
+            <input type="number" id="temperature" name="temperature" step="0.1" required>
+
+            <label for="tds">Total Dissolved Solids (TDS):</label>
+            <input type="number" id="tds" name="tds" required>
+
+            <label for="calcium">Calcium Hardness:</label>
+            <input type="number" id="calcium" name="calcium" required>
+
+            <label for="alkalinity">Alkalinity:</label>
+            <input type="number" id="alkalinity" name="alkalinity" required>
+
+            <button type="submit">Calculate</button>
         </form>
-        <div id="results">
+
+        <div class="results">
             <h2>Results</h2>
-            <p id="lsi-result"></p>
-            <p id="rsi-result"></p>
-            <p id="prediction-result"></p>
-        </div>
-        <div id="linkedin">
-            <p>LinkedIn: Muhammad Alfi Syahri</p>
+            <p id="lsi-result">LSI: </p>
+            <p id="rsi-result">RSI: </p>
+            <p id="lsi-prediction-result">LSI Prediction: </p>
+            <p id="rsi-prediction-result">RSI Prediction: </p>
         </div>
     </div>
     <script src="script.js"></script>
